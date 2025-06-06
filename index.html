@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFlow - By Armaan</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 min-h-screen text-gray-800">
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-sm shadow-lg rounded-b-2xl">
+        <div class="max-w-5xl mx-auto px-6 py-5 flex justify-between items-center">
+            <span class="text-2xl font-bold text-slate-800 tracking-wide">FitFlow</span>
+            <nav class="hidden md:flex gap-10 text-base items-center">
+                <a href="#workouts" class="hover:text-blue-600 transition-colors duration-300 font-medium">Workouts</a>
+                <a href="#nutrition"
+                    class="hover:text-blue-600 transition-colors duration-300 font-medium">Nutrition</a>
+                <a href="#habits" class="hover:text-blue-600 transition-colors duration-300 font-medium">Habits</a>
+                <a href="#meditation"
+                    class="hover:text-blue-600 transition-colors duration-300 font-medium">Mindfulness</a>
+            </nav>
+        </div>
+    </header>
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <section class="text-center mb-20 animate-fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold text-slate-900 mb-6 leading-tight">Your Jourknee starts today</h1>
+            <p class="text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">Keep Track of Your Progress with
+                FitFlow</p>
+            <a href="#workouts"
+                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-2xl font-semibold shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl">Begin
+                Your Transformation</a>
+        </section>
+        <section id="workouts" class="mb-20">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-slate-800">Today's Workouts</h2>
+                <button onclick="document.getElementById('workout-form').classList.toggle('hidden')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">Log
+                    New Workout</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- def workout cards -->
+                <div class="bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-semibold text-slate-800 text-xl">Morning Run</h3>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-xl text-sm font-medium">30 min</span>
+                    </div>
+                    <p class="text-slate-600 mb-6">Distance: 5km - Pace - 0.0001:00/km(yes why not)</p>
+                    <div class="flex gap-3">
+                        <button onclick="this.parentNode.parentNode.style.opacity='0.5'; this.textContent='Completed!'"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300">Mark
+                            Complete</button>
+                        <button onclick="this.parentNode.parentNode.remove()"
+                            class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-xl text-sm transition-all duration-300">Remove</button>
+                    </div>
+                </div>
+
+                <div class="bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-semibold text-slate-800 text-xl">Strength Training</h3>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-2 rounded-xl text-sm font-medium">45
+                            min</span>
+                    </div>
+                    <p class="text-slate-600 mb-6">Focus: Upper Body - Sets: ♾️x12 🗿</p>
+                    <div class="flex gap-3">
+                        <button onclick="this.parentNode.parentNode.style.opacity='0.5'; this.textContent='Completed!'"
+                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300">Mark
+                            Complete</button>
+                        <button onclick="this.parentNode.parentNode.remove()"
+                            class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-xl text-sm transition-all duration-300">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- workout form -->
+            <div id="workout-form" class="hidden bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                <h3 class="text-xl font-semibold text-slate-800 mb-6">Log New Workout</h3>
+                <form id="add-workout" class="grid md:grid-cols-3 gap-6">
+                    <input type="text" id="workout-name" placeholder="Exercise name" required
+                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <input type="text" id="workout-duration" placeholder="Duration (e.g., 30 min)" required
+                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <input type="text" id="workout-details" placeholder="Details (e.g., 5km run)" required
+                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button type="submit"
+                        class="md:col-span-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105">Add
+                        Workout</button>
+                </form>
+            </div>
+            <section id="hydration" class="mb-20">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">Daily Hydration Goal</h2>
+                <div class="bg-white/90 rounded-2xl shadow-lg p-8 max-w-md mx-auto border border-slate-100">
+                    <div class="text-center mb-6">
+                        <span id="water-count" class="text-4xl font-bold text-blue-600">0</span>
+                        <span class="text-xl text-slate-600">/ 8 glasses</span>
+                    </div>
+                    <div class="flex justify-center gap-2 mb-6" id="water-glasses">
+                        <!-- CSS to show filled cups -->
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="1"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="2"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="3"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="4"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="5"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="6"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="7"></div>
+                        <div class="w-10 h-12 border-2 border-blue-300 rounded-xl glass" data-glass="8"></div>
+                    </div>
+                    <div class="flex justify-center gap-4">
+                        <button onclick="addWater()"
+                            class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">Add
+                            Glass</button>
+                        <button onclick="resetWater()"
+                            class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-6 py-3 rounded-xl transition-all duration-300">Reset</button>
+                    </div>
+                </div>
+            </section>
+            <section id="nutrition" class="mb-20">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-10">Nutrition Tracker</h2>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="bg-white/90 rounded-2xl shadow-lg p-8 border border-slate-100">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-6">Quick Log Meals</h3>
+                        <div class="space-y-4">
+                            <button onclick="logMeal('Breakfast', this)"
+                                class="w-full text-left p-4 bg-amber-50 hover:bg-amber-100 rounded-xl border border-amber-200 transition-all duration-300 hover:scale-105">
+                                Breakfast - Click to log
+                            </button>
+                            <button onclick="logMeal('Lunch', this)"
+                                class="w-full text-left p-4 bg-emerald-50 hover:bg-emerald-100 rounded-xl border border-emerald-200 transition-all duration-300 hover:scale-105">
+                                Lunch - Click to log
+                            </button>
+                            <button onclick="logMeal('Dinner', this)"
+                                class="w-full text-left p-4 bg-orange-50 hover:bg-orange-100 rounded-xl border border-orange-200 transition-all duration-300 hover:scale-105">
+                                Dinner - Click to log
+                            </button>
+                            <button onclick="logMeal('Snack', this)"
+                                class="w-full text-left p-4 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition-all duration-300 hover:scale-105">
+                                Snack - Click to log
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white/90 rounded-2xl shadow-lg p-8 border border-slate-100">
+                        <h3 class="text-xl font-semibold text-slate-800 mb-6">Today's Meals</h3>
+                        <div id="meal-log" class="space-y-3 min-h-32">
+                            <p class="text-slate-500 italic">No meals logged. Start by clicking the buttons on your
+                                left!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="habits" class="mb-20">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-10">Daily Habits</h2>
+                <div class="bg-white/90 rounded-2xl shadow-lg p-8 border border-slate-100 max-w-3xl mx-auto">
+                    <p class="text-slate-600 text-center mb-8">Track your daily habits and be consistent
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Drink 8 glasses of water</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Get 30 mins of exercise</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Eat 5 servings of fruits or vegies</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Take ur supplements</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Practice mindfulness</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                            <div class="flex justify-between items-center p-4 bg-slate-50 rounded-xl">
+                                <span class="font-medium text-slate-800">Get 8 hours of sleep</span>
+                                <button onclick="toggleHabit(this)"
+                                    class="habit-btn bg-slate-300 hover:bg-green-500 text-slate-700 hover:text-white px-4 py-2 rounded-lg transition-all duration-300">Mark
+                                    Done</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <div class="text-2xl font-bold text-slate-800 mb-2">Today's Completion</div>
+                        <div class="text-4xl font-bold text-blue-600" id="habits-completed">0/6</div>
+                        <button onclick="resetHabits()"
+                            class="mt-4 bg-slate-300 hover:bg-slate-400 text-slate-700 px-6 py-2 rounded-xl transition-all duration-300">Reset
+                            for Tomorrow</button>
+                    </div>
+                </div>
+            </section>
+            <section id="meditation" class="mb-20">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-10">Mindfulness Corner</h2>
+                <div
+                    class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl shadow-lg p-10 max-w-lg mx-auto text-center border border-indigo-100">
+                    <h3 class="text-2xl font-semibold text-indigo-800 mb-6">Meditation Timer</h3>
+                    <div id="meditation-display" class="text-5xl font-mono text-indigo-700 mb-8">05:00</div>
+                    <div class="flex justify-center gap-4 mb-8">
+                        <button onclick="setMeditationTime(5)"
+                            class="bg-indigo-200 hover:bg-indigo-300 text-indigo-700 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">5
+                            min</button>
+                        <button onclick="setMeditationTime(10)"
+                            class="bg-indigo-200 hover:bg-indigo-300 text-indigo-700 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">10
+                            min</button>
+                        <button onclick="setMeditationTime(15)"
+                            class="bg-indigo-200 hover:bg-indigo-300 text-indigo-700 px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">15
+                            min</button>
+                    </div>
+                    <div class="flex justify-center gap-4">
+                        <button id="start-meditation" onclick="startMeditation()"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl transition-all duration-300 hover:scale-105">Start</button>
+                        <button onclick="pauseMeditation()"
+                            class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-8 py-3 rounded-xl transition-all duration-300">Pause</button>
+                        <button onclick="resetMeditation()"
+                            class="bg-slate-300 hover:bg-slate-400 text-slate-700 px-8 py-3 rounded-xl transition-all duration-300">Reset</button>
+                    </div>
+                    <div class="mt-6 text-indigo-600">
+                        <p>Focus on your breathing and let thoughts pass by like clouds</p>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-20">
+                <h2 class="text-3xl font-bold text-slate-800 text-center mb-10">Fitness Tips</h2>
+                <div class="bg-white/90 rounded-2xl shadow-lg p-10 border border-slate-100">
+                    <div class="grid md:grid-cols-2 gap-10">
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 mb-6">Workout Tips</h3>
+                            <ul class="space-y-4 text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-blue-500 mt-1 text-lg">-</span>
+                                    <span>Start with 10-15 minutes of warm-up before intense exercises</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-blue-500 mt-1 text-lg">-</span>
+                                    <span>Focus on form over speed - quality beats quantity every time</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-blue-500 mt-1 text-lg">-</span>
+                                    <span>Rest days are just as important as workout days for muscle recovery</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-blue-500 mt-1 text-lg">-</span>
+                                    <span>Stay consistent - small daily efforts lead to big results</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 mb-6">Nutrition Tips</h3>
+                            <ul class="space-y-4 text-slate-600">
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 mt-1 text-lg">-</span>
+                                    <span>Eat protein within 30 minutes after your workout</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 mt-1 text-lg">-</span>
+                                    <span>Drink water throughout the day, not just when you're thirsty</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 mt-1 text-lg">-</span>
+                                    <span>Fill half your plate with vegetables for balanced nutrition</span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <span class="text-emerald-500 mt-1 text-lg">-</span>
+                                    <span>Plan your meals ahead to avoid unhealthy food choices</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="bg-slate-900 rounded-3xl text-white py-12 mb-6 shadow-2xl">
+                <div class="max-w-5xl mx-auto px-6 text-center">
+                    <h3 class="text-2xl font-bold mb-3">FitFlow</h3>
+                    <p class="text-sm text-slate-400">Made by <a href="https://github.com/ArvashV" target="_blank"
+                            rel="noopener noreferrer">Armaan</a> for <a href="https://hackclub.com" target="_blank"
+                            rel="noopener noreferrer">Grub - HackClub</a></p>
+                </div>
+            </footer>
+    </main>
+    <script>
+        let waterCount = 0;
+        function addWater() {
+            if (waterCount < 8) {
+                waterCount++;
+                document.getElementById('water-count').textContent = waterCount;
+                // just filling color to the glasses  might add a image here in future, that will look great tbh
+                document.querySelector(`[data-glass="${waterCount}"]`).style.backgroundColor = '#2563eb';
+            }
+            if (waterCount === 8) {
+                alert('Great job! You hit your daily hydration goal!');
+            }
+        }
+        function resetWater() {
+            waterCount = 0;
+            document.getElementById('water-count').textContent = '0';
+            document.querySelectorAll('.glass').forEach(glass => glass.style.backgroundColor = 'transparent');
+        }
+
+        document.getElementById('add-workout')?.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('workout-name').value;
+            const duration = document.getElementById('workout-duration').value;
+            const details = document.getElementById('workout-details').value;
+
+            if (!name || !duration) return;
+
+            const workoutCard = document.createElement('div');
+            workoutCard.className = 'bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100 animate-fade-in';
+            workoutCard.innerHTML = `
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-semibold text-slate-800 text-xl">${name}</h3>
+                    <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-xl text-sm font-medium">${duration}</span>
+                </div>
+                <p class="text-slate-600 mb-6">${details}</p>
+                <div class="flex gap-3">
+                    <button onclick="this.parentNode.parentNode.style.opacity='0.5'; this.textContent='Completed!'"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300">Mark Complete</button>
+                    <button onclick="this.parentNode.parentNode.remove()"
+                        class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-xl text-sm transition-all duration-300">Remove</button>
+                </div>
+            `;
+
+            document.querySelector('#workouts .grid').appendChild(workoutCard);
+            this.reset();
+            document.getElementById('workout-form').classList.add('hidden');
+        });
+
+        function logMeal(mealType, button) {
+            const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const mealLog = document.getElementById('meal-log');
+
+            if (mealLog.querySelector('p.text-slate-500')) {
+                mealLog.innerHTML = '';
+            }
+
+            const mealEntry = document.createElement('div');
+            mealEntry.className = 'bg-slate-50 p-4 rounded-xl border-l-4 border-blue-500 animate-fade-in';
+            mealEntry.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <span class="font-medium">${mealType} - ${time}</span>
+                    <button onclick="this.parentNode.parentNode.remove()" class="text-red-500 hover:text-red-700 text-xl">×</button>
+                </div>
+            `;
+
+            mealLog.appendChild(mealEntry);
+            button.style.opacity = '0.6';
+            button.textContent = button.textContent.replace('Click to log', 'Logged!');
+        }
+
+        let habitsCompleted = 0;
+        function toggleHabit(button) {
+            if (button.classList.contains('completed')) {
+                // uncomplete habit
+                button.classList.remove('completed', 'bg-green-500', 'text-white');
+                button.classList.add('bg-slate-300', 'text-slate-700');
+                button.textContent = 'Mark Done';
+                habitsCompleted--;
+            } else {
+                // complete habit
+                button.classList.add('completed', 'bg-green-500', 'text-white');
+                button.classList.remove('bg-slate-300', 'text-slate-700');
+                button.textContent = 'Completed!';
+                habitsCompleted++;
+            }
+            document.getElementById('habits-completed').textContent = `${habitsCompleted}/6`;
+
+            if (habitsCompleted === 6) {
+                setTimeout(() => alert('Awsome! You completed all your daily habits!'), 300);
+            }
+        }
+
+        function resetHabits() {
+            habitsCompleted = 0;
+            document.getElementById('habits-completed').textContent = '0/6';
+            document.querySelectorAll('.habit-btn').forEach(btn => {
+                btn.classList.remove('completed', 'bg-green-500', 'text-white');
+                btn.classList.add('bg-slate-300', 'text-slate-700');
+                btn.textContent = 'Mark Done';
+            });
+        }
+
+        // Timer
+
+        let meditationTime = 300; // 5 min
+        let meditationInterval;
+        let meditationRunning = false;
+
+        function setMeditationTime(minutes) {
+            meditationTime = minutes * 60;
+            updateMeditationDisplay();
+        }
+
+        function updateMeditationDisplay() {
+            const mins = Math.floor(meditationTime / 60);
+            const secs = meditationTime % 60;
+            document.getElementById('meditation-display').textContent =
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function startMeditation() {
+            if (meditationRunning) return;
+            meditationRunning = true;
+            meditationInterval = setInterval(() => {
+                if (meditationTime > 0) {
+                    meditationTime= meditationTime - 1;
+                    updateMeditationDisplay();
+                } else {
+                    clearInterval(meditationInterval);
+                    meditationRunning = false;
+                    alert('Great! You completed meditation.');
+                }
+            }, 1000);
+        }
+
+        function pauseMeditation() {
+            clearInterval(meditationInterval);
+            meditationRunning = false;
+        }
+
+        function resetMeditation() {
+            clearInterval(meditationInterval);
+            meditationRunning = false;
+            setMeditationTime(5);
+        }
+
+        // Init meditation dispay on page load
+        updateMeditationDisplay();
+    </script>
+    <style>
+        .animate-fade-up {
+            animation: fadeUp 1s ease-out;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .glass {
+            transition: all 0.3s ease;
+        }
+
+        .workout-card {
+            transition: all 0.3s ease;
+        }
+
+        .workout-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</body>
+
+</html>
