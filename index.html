@@ -34,13 +34,12 @@
         <section id="workouts" class="mb-20">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-bold text-slate-800">Today's Workouts</h2>
-                <button onclick="document.getElementById('workout-form').classList.toggle('hidden')"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">Log
-                    New Workout</button>
+                <button onclick="document.getElementById('quick-workout').classList.toggle('hidden')"
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105">Quick
+                    Add</button>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8 mb-8">
-                <!-- def workout cards -->
                 <div class="bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100">
                     <div class="flex justify-between items-start mb-4">
                         <h3 class="font-semibold text-slate-800 text-xl">Morning Run</h3>
@@ -73,20 +72,30 @@
                 </div>
             </div>
 
-            <!-- workout form -->
-            <div id="workout-form" class="hidden bg-slate-50 rounded-2xl p-8 border border-slate-200">
-                <h3 class="text-xl font-semibold text-slate-800 mb-6">Log New Workout</h3>
-                <form id="add-workout" class="grid md:grid-cols-3 gap-6">
-                    <input type="text" id="workout-name" placeholder="Exercise name" required
-                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <input type="text" id="workout-duration" placeholder="Duration (e.g., 30 min)" required
-                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <input type="text" id="workout-details" placeholder="Details (e.g., 5km run)" required
-                        class="p-4 border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    <button type="submit"
-                        class="md:col-span-3 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105">Add
-                        Workout</button>
-                </form>
+            <div id="quick-workout" class="hidden bg-slate-50 rounded-2xl p-6 border border-slate-200 mb-8">
+                <h3 class="text-lg font-semibold text-slate-800 mb-4">Quick Add Workout</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button onclick="addQuickWorkout('Push-ups', '15 min', 'Bodyweight')"
+                        class="quick-workout-btn bg-blue-50 hover:bg-blue-100 text-blue-700 p-4 rounded-xl border border-blue-200 transition-all duration-300 hover:scale-105">
+                        <div class="font-medium">Push-ups</div>
+                        <div class="text-sm opacity-75">15 min</div>
+                    </button>
+                    <button onclick="addQuickWorkout('Yoga', '30 min', 'Flexibility')"
+                        class="quick-workout-btn bg-purple-50 hover:bg-purple-100 text-purple-700 p-4 rounded-xl border border-purple-200 transition-all duration-300 hover:scale-105">
+                        <div class="font-medium">Yoga</div>
+                        <div class="text-sm opacity-75">30 min</div>
+                    </button>
+                    <button onclick="addQuickWorkout('Cardio', '20 min', 'High intensity')"
+                        class="quick-workout-btn bg-red-50 hover:bg-red-100 text-red-700 p-4 rounded-xl border border-red-200 transition-all duration-300 hover:scale-105">
+                        <div class="font-medium">Cardio</div>
+                        <div class="text-sm opacity-75">20 min</div>
+                    </button>
+                    <button onclick="addQuickWorkout('Weights', '45 min', 'Full body')"
+                        class="quick-workout-btn bg-emerald-50 hover:bg-emerald-100 text-emerald-700 p-4 rounded-xl border border-emerald-200 transition-all duration-300 hover:scale-105">
+                        <div class="font-medium">Weights</div>
+                        <div class="text-sm opacity-75">45 min</div>
+                    </button>
+                </div>
             </div>
             <section id="hydration" class="mb-20">
                 <h2 class="text-3xl font-bold text-slate-800 text-center mb-8">Daily Hydration Goal</h2>
@@ -293,17 +302,14 @@
                 </div>
             </footer>
     </main>
-    <script>
-        let waterCount = 0;
+    <script>        
+    let waterCount = 0;
         function addWater() {
             if (waterCount < 8) {
                 waterCount++;
                 document.getElementById('water-count').textContent = waterCount;
-                // just filling color to the glasses  might add a image here in future, that will look great tbh
                 document.querySelector(`[data-glass="${waterCount}"]`).style.backgroundColor = '#2563eb';
-            }
-            if (waterCount === 8) {
-                alert('Great job! You hit your daily hydration goal!');
+                if (waterCount === 8) alert('Great! You hit your daily water goal!');
             }
         }
         function resetWater() {
@@ -312,52 +318,21 @@
             document.querySelectorAll('.glass').forEach(glass => glass.style.backgroundColor = 'transparent');
         }
 
-        document.getElementById('add-workout')?.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const name = document.getElementById('workout-name').value;
-            const duration = document.getElementById('workout-duration').value;
-            const details = document.getElementById('workout-details').value;
-
-            if (!name || !duration) return;
-
+        function addQuickWorkout(name, duration, details) {
             const workoutCard = document.createElement('div');
-            workoutCard.className = 'bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100 animate-fade-in';
-            workoutCard.innerHTML = `
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="font-semibold text-slate-800 text-xl">${name}</h3>
-                    <span class="bg-blue-100 text-blue-700 px-3 py-2 rounded-xl text-sm font-medium">${duration}</span>
-                </div>
-                <p class="text-slate-600 mb-6">${details}</p>
-                <div class="flex gap-3">
-                    <button onclick="this.parentNode.parentNode.style.opacity='0.5'; this.textContent='Completed!'"
-                        class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300">Mark Complete</button>
-                    <button onclick="this.parentNode.parentNode.remove()"
-                        class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-xl text-sm transition-all duration-300">Remove</button>
-                </div>
-            `;
-
+            workoutCard.className = 'bg-white/90 rounded-2xl shadow-lg p-8 workout-card border border-slate-100';
+            workoutCard.innerHTML = `<div class="flex justify-between items-start mb-4"><h3 class="font-semibold text-slate-800 text-xl">${name}</h3><span class="bg-green-100 text-green-700 px-3 py-2 rounded-xl text-sm font-medium">${duration}</span></div><p class="text-slate-600 mb-6">${details}</p><div class="flex gap-3"><button onclick="this.parentNode.parentNode.style.opacity='0.5'; this.textContent='Completed!'" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm transition-all duration-300">Mark Complete</button><button onclick="this.parentNode.parentNode.remove()" class="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-xl text-sm transition-all duration-300">Remove</button></div>`;
             document.querySelector('#workouts .grid').appendChild(workoutCard);
-            this.reset();
-            document.getElementById('workout-form').classList.add('hidden');
-        });
+            document.getElementById('quick-workout').classList.add('hidden');
+        }
 
         function logMeal(mealType, button) {
             const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             const mealLog = document.getElementById('meal-log');
-
-            if (mealLog.querySelector('p.text-slate-500')) {
-                mealLog.innerHTML = '';
-            }
-
+            if (mealLog.querySelector('p.text-slate-500')) mealLog.innerHTML = '';
             const mealEntry = document.createElement('div');
-            mealEntry.className = 'bg-slate-50 p-4 rounded-xl border-l-4 border-blue-500 animate-fade-in';
-            mealEntry.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span class="font-medium">${mealType} - ${time}</span>
-                    <button onclick="this.parentNode.parentNode.remove()" class="text-red-500 hover:text-red-700 text-xl">×</button>
-                </div>
-            `;
-
+            mealEntry.className = 'bg-slate-50 p-4 rounded-xl border-l-4 border-blue-500';
+            mealEntry.innerHTML = `<div class="flex justify-between items-center"><span class="font-medium">${mealType} - ${time}</span><button onclick="this.parentNode.parentNode.remove()" class="text-red-500 hover:text-red-700 text-xl">×</button></div>`;
             mealLog.appendChild(mealEntry);
             button.style.opacity = '0.6';
             button.textContent = button.textContent.replace('Click to log', 'Logged!');
@@ -366,23 +341,18 @@
         let habitsCompleted = 0;
         function toggleHabit(button) {
             if (button.classList.contains('completed')) {
-                // uncomplete habit
                 button.classList.remove('completed', 'bg-green-500', 'text-white');
                 button.classList.add('bg-slate-300', 'text-slate-700');
                 button.textContent = 'Mark Done';
                 habitsCompleted--;
             } else {
-                // complete habit
                 button.classList.add('completed', 'bg-green-500', 'text-white');
                 button.classList.remove('bg-slate-300', 'text-slate-700');
                 button.textContent = 'Completed!';
                 habitsCompleted++;
             }
             document.getElementById('habits-completed').textContent = `${habitsCompleted}/6`;
-
-            if (habitsCompleted === 6) {
-                setTimeout(() => alert('Awsome! You completed all your daily habits!'), 300);
-            }
+            if (habitsCompleted === 6) setTimeout(() => alert('Awesome! You completed all your daily habits!'), 300);
         }
 
         function resetHabits() {
@@ -393,54 +363,40 @@
                 btn.classList.add('bg-slate-300', 'text-slate-700');
                 btn.textContent = 'Mark Done';
             });
-        }
-
-        // Timer
-
-        let meditationTime = 300; // 5 min
+        } let meditationTime = 300;
         let meditationInterval;
-        let meditationRunning = false;
-
         function setMeditationTime(minutes) {
             meditationTime = minutes * 60;
-            updateMeditationDisplay();
+            updateDisplay();
         }
-
-        function updateMeditationDisplay() {
+        function updateDisplay() {
             const mins = Math.floor(meditationTime / 60);
             const secs = meditationTime % 60;
-            document.getElementById('meditation-display').textContent =
-                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            document.getElementById('meditation-display').textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }
-
         function startMeditation() {
-            if (meditationRunning) return;
-            meditationRunning = true;
+            if (meditationInterval) return;
             meditationInterval = setInterval(() => {
                 if (meditationTime > 0) {
-                    meditationTime= meditationTime - 1;
-                    updateMeditationDisplay();
+                    meditationTime--;
+                    updateDisplay();
                 } else {
                     clearInterval(meditationInterval);
-                    meditationRunning = false;
+                    meditationInterval = null;
                     alert('Great! You completed meditation.');
                 }
             }, 1000);
         }
-
         function pauseMeditation() {
             clearInterval(meditationInterval);
-            meditationRunning = false;
+            meditationInterval = null;
         }
-
         function resetMeditation() {
             clearInterval(meditationInterval);
-            meditationRunning = false;
+            meditationInterval = null;
             setMeditationTime(5);
         }
-
-        // Init meditation dispay on page load
-        updateMeditationDisplay();
+        setMeditationTime(5);
     </script>
     <style>
         .animate-fade-up {
